@@ -2,7 +2,7 @@
 
 from setuptools import find_namespace_packages
 from setuptools import setup
-
+from typing import List
 
 def _get_version():
   with open('vizier/__init__.py') as fp:
@@ -20,7 +20,7 @@ def _strip_comments_from_line(s: str) -> str:
   return requirement.strip()
 
 
-def _parse_requirements(requirements_txt_path: str) -> list[str]:
+def _parse_requirements(requirements_txt_path: str) -> List[str]:
   """Returns a list of dependencies for setup() from requirements.txt."""
 
   # Currently a requirements.txt is being used to specify dependencies. In order
