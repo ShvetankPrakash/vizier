@@ -33,7 +33,7 @@ flags.DEFINE_integer(
 FLAGS = flags.FLAGS
 
 
-@functools.lru_cache
+@functools.lru_cache()
 def create_server_stub(
     service_endpoint: str) -> vizier_service_pb2_grpc.VizierServiceStub:
   """Creates the GRPC stub.
@@ -308,7 +308,7 @@ class VizierClient:
     _ = future.result()
     logging.info('Trial deleted: %s', trial_id)
 
-  def delete_study(self, study_resource_name: Optional[str] = None, /) -> None:
+  def delete_study(self, study_resource_name: Optional[str] = None) -> None:
     """Deletes study from datastore."""
     study_resource_name = study_resource_name or (resources.StudyResource(
         self._owner_id, self._study_id).name)

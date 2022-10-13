@@ -1,8 +1,8 @@
 """Base class for acquisition optimizers."""
 
 import abc
-from typing import Any, Callable, Optional, Protocol, Sequence
-
+from typing import Any, Callable, Optional, Sequence, Dict, List
+from typing_extensions import Protocol
 import attr
 from vizier import pyvizier as vz
 
@@ -19,7 +19,7 @@ class BatchTrialScoreFunction(Protocol):
   """Protocol (https://peps.python.org/pep-0544/) for scoring trials."""
 
   # TODO: Decide what to do with NaNs.
-  def __call__(self, trials: Sequence[vz.Trial]) -> dict[str, Array]:
+  def __call__(self, trials: Sequence[vz.Trial]) -> Dict[str, Array]:
     """Evaluates the trials.
 
     Args:
@@ -57,7 +57,7 @@ class BranchSelection:
 class BranchSelector(abc.ABC):
 
   @abc.abstractmethod
-  def select_branches(self, num_suggestions: int) -> list[BranchSelection]:
+  def select_branches(self, num_suggestions: int) -> List[BranchSelection]:
     pass
 
 
@@ -74,7 +74,7 @@ class GradientFreeOptimizer(abc.ABC):
                *,
                count: int = 1,
                budget_factor: float = 1.0,
-               **kwargs) -> list[vz.Trial]:
+               **kwargs) -> List[vz.Trial]:
     """Optimizes a function.
 
     Args:
@@ -121,7 +121,7 @@ class BranchThenOptimizer(GradientFreeOptimizer):
                *,
                count: int = 1,
                budget_factor: float = 1.0,
-               **kwargs) -> list[vz.Trial]:
+               **kwargs) -> List[vz.Trial]:
     # If there are conditional branches, use Vizier's default branch
     # selection mechanism.
     branches = self._branch_selector.select_branches(count)

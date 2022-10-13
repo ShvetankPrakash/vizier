@@ -61,7 +61,7 @@ class Population(serializable.Serializable, abc.ABC):
   def __getitem__(
       self: _P,
       index: Union[int, slice],
-      /,
+      
   ) -> _P:
     pass
 

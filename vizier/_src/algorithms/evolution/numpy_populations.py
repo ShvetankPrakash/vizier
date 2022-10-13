@@ -210,7 +210,7 @@ class Population(templates.Population):
   def __getitem__(
       self,
       index: Any,
-      /,
+      
   ) -> 'Population':
     return Population(**{k: v[index] for k, v in attr.asdict(self).items()})
 

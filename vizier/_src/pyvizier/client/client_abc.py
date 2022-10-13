@@ -233,7 +233,7 @@ class StudyInterface(abc.ABC):
 
   @classmethod
   @abc.abstractmethod
-  def from_resource_name(cls: Type[_T], name: str, /) -> _T:
+  def from_resource_name(cls: Type[_T], name: str) -> _T:
     """Fetches an existing study from the Vizier service.
 
     Args:

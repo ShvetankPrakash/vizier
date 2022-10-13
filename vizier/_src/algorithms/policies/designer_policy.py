@@ -1,7 +1,8 @@
 """Wrappers for Designer into Policy."""
 import abc
 import json
-from typing import Callable, Generic, Sequence, Type, TypeVar, Protocol
+from typing import Callable, Generic, Sequence, Type, TypeVar
+from typing_extensions import Protocol
 
 from absl import logging
 from vizier import algorithms as vza

@@ -1,6 +1,7 @@
 """Utility functions for handling vizier metadata."""
 
-from typing import Tuple, Union, Optional, TypeVar, Type, Literal, Dict, List
+from typing import Tuple, Union, Optional, TypeVar, Type, Dict, List
+from typing_extensions import Literal
 
 from vizier._src.pyvizier.shared import common
 from vizier._src.pyvizier.shared import trial
